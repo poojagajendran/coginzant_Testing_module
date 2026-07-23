@@ -1,0 +1,18 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+
+# Implicit wait applies to all element searches globally.
+# It is generally not recommended because it waits for every element lookup,
+# even when unnecessary. Explicit waits are preferred since they wait only
+# for specific conditions, making tests faster and more reliable.
+
+driver.implicitly_wait(10)
+
+driver.get("https://www.lambdatest.com/selenium-playground/")
+
+print(driver.title)
+
+driver.quit()
